@@ -40,3 +40,5 @@ Thumbs.db
 outputs/*.pkl
 outputs/**/*.pkl
 *.csv
+!data/
+!data/**/*.csv
