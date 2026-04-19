@@ -1,2 +1,0 @@
-Label encoder used to convert class names which are in characters into numbers so the ai can train on it 
-model was trained with 740 iterations and couldn't reach convergence in the given iterations. 

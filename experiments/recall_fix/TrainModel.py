@@ -5,7 +5,7 @@ from sklearn.metrics import classification_report
 import pandas as pd
 from sklearn.preprocessing import LabelEncoder
 
-df = pd.read_csv('C:/Users/manve/Desktop/New model/max_iter increase/bmi.csv')
+df = pd.read_csv('../../data/bmi.csv')
 
 def ConvertFeatures(df):
     label_encoder = LabelEncoder()
@@ -18,9 +18,9 @@ def TrainModel(df):
     X = df.drop(['EncodedBmiClass', 'BmiClass'], axis=1)
     Y = df['EncodedBmiClass']
     #split the data into training and testing
-    X_train, X_test, Y_train, Y_test = train_test_split(X,Y, test_size=0.2, random_state=42)
+    X_train, X_test, Y_train, Y_test = train_test_split(X,Y, test_size=0.2, random_state=42, stratify=Y)
     #train the model
-    model = LogisticRegression(max_iter=10000)
+    model = LogisticRegression(max_iter=10000, class_weight='balanced')
     model.fit(X_train, Y_train)
 
     #test the model
@@ -30,7 +30,7 @@ def TrainModel(df):
     print(classification_report(Y_test, test_predictions))
     
     #save the model
-    joblib.dump(model, '/Users/manve/Desktop/New model/max_iter increase/trained_model.pkl')
+    joblib.dump(model, '../../outputs/recall_fix/trained_model.pkl')
     print("model saved successfully as \'trained_model.pkl\'")
 df, label_encoder = ConvertFeatures(df)
 TrainModel(df)

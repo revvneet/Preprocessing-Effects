@@ -1,8 +1,0 @@
-Low recall for class 1: implies that there is less frequent occurances of that class
-this means there is a class imbalance
-confirmed class imbalance by printing the occurances of each class
-added stratify=Y to proportionately distribute the occurances of class in train and test split
-added class_weight = balanced which tells the model to equally consider each case no matter the less frequent occurances
-recall increased to 100% but precision dropped to 50%
-this implies model is predicting 100% of the 1 cases but 50% of the cases it predicts as 1 are wrong
-this means it is predicting more 1 cases than there are

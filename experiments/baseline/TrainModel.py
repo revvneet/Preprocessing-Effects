@@ -5,7 +5,7 @@ from sklearn.metrics import classification_report
 import pandas as pd
 from sklearn.preprocessing import LabelEncoder
 
-df = pd.read_csv('C:/Users/manve/Desktop/New model/Unprocessed data/bmi.csv')
+df = pd.read_csv('../../data/bmi.csv')
 
 def ConvertFeatures(df):
     label_encoder = LabelEncoder()
@@ -30,7 +30,7 @@ def TrainModel(df):
     print(classification_report(Y_test, test_predictions))
     
     #save the model
-    joblib.dump(model, '/Users/manve/Desktop/New model/Unprocessed data/trained_model.pkl')
+    joblib.dump(model, '../../outputs/baseline/trained_model.pkl')
     print("model saved successfully as \'trained_model.pkl\'")
 df, label_encoder = ConvertFeatures(df)
 TrainModel(df)

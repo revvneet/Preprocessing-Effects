@@ -1,3 +1,0 @@
-The missing values were fixed by using the KNN model
-encoded bmi class was fixed with mode method as KNN model returns avg of neighboring 5 values, this class is a label so 2.6, 4.3 etc makes no sense.
-mode returns whole numbers

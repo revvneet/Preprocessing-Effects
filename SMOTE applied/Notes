@@ -1,3 +1,0 @@
-treating 1's imbalance was done with the help of SMOTE which is a technique that generates new entries and balances all the occurances by generating noisy values and using the neighbor values.
-this allows all classes to be balanced and the model having equal entries of each class to work with
-standard scaler was also applied as a requirement for smote

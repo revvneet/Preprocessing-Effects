@@ -3,14 +3,19 @@ from sklearn.model_selection import train_test_split
 from sklearn.linear_model import LogisticRegression
 from sklearn.metrics import classification_report
 import pandas as pd
+from sklearn.preprocessing import LabelEncoder
 from sklearn.preprocessing import StandardScaler
 from imblearn.over_sampling import SMOTE
-from sklearn.impute import KNNImputer
 
-df = pd.read_csv('C:/Users/manve/Desktop/New model/missing values simulated/bmi_missing.csv')
+df = pd.read_csv('../../data/bmi.csv')
+
+def ConvertFeatures(df):
+    label_encoder = LabelEncoder()
+    df['EncodedBmiClass'] = label_encoder.fit_transform(df['BmiClass'])
+    print(label_encoder.classes_)
+    return df, label_encoder
 
 def TrainModel(df):
-    df = df.dropna()
     #split it into input and output
     X = df.drop(['BmiClass', 'EncodedBmiClass'], axis=1)
     scaler = StandardScaler()
@@ -33,6 +38,7 @@ def TrainModel(df):
     print(classification_report(Y_test, test_predictions))
     
     #save the model
-    joblib.dump(model, '/Users/manve/Desktop/New model/missing values simulated/trained_model.pkl')
+    joblib.dump(model, '../../outputs/smote_scaling/trained_model.pkl')
     print("model saved successfully as \'trained_model.pkl\'")
+df, label_encoder = ConvertFeatures(df)
 TrainModel(df)
