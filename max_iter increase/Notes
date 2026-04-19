@@ -1,0 +1,3 @@
+Increased the number of iterations to ensure the model has enough iterations to converge 
+learned about what happens in each iteration and how logical regression handles data in each iteration
+noticed low recall for class: 1
